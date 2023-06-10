@@ -1,3 +1,6 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 require("nvim-tree").setup({
 	sort_by = "case_sensitive",
 	view = {
@@ -19,13 +22,13 @@ require("nvim-tree").setup({
 	},
 	git = {
 		enable = true,
-		ignore = true,
+		ignore = false,
 		timeout = 500,
 	},
 	on_attach = function(bufnr)
 		local api = require("nvim-tree.api")
 
 		api.config.mappings.default_on_attach(bufnr)
-		vim.keymap.del("n", "s", { buffer = bufnr })
+		-- vim.keymap.del("n", "s", { buffer = bufnr })
 	end,
 })

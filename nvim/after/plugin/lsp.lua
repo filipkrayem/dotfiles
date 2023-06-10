@@ -1,10 +1,5 @@
 local lsp = require("lsp-zero").preset({})
 
-lsp.ensure_installed({
-	"tsserver",
-	"rust_analyzer",
-})
-
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 
@@ -139,6 +134,11 @@ cmp.setup({
 	},
 })
 
+
+require("mason-null-ls").setup({
+	automatic_setup = true,
+})
+
 local null_ls = require("null-ls")
 
 null_ls.setup({
@@ -148,13 +148,11 @@ null_ls.setup({
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.rustfmt,
 		null_ls.builtins.formatting.gofmt,
+        null_ls.builtins.formatting.clang_format,
+        null_ls.builtins.diagnostics.clang_check,
 		null_ls.builtins.diagnostics.tsc,
 	},
 	debug = false,
-})
-
-require("mason-null-ls").setup({
-	automatic_setup = true,
 })
 
 vim.diagnostic.config({

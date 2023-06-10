@@ -55,6 +55,10 @@ return require("packer").startup(function(use)
 	use("mbbill/undotree")
 	use("nvim-treesitter/nvim-treesitter-context")
 	use("mortepau/codicons.nvim")
+	use({
+		"phaazon/hop.nvim",
+		branch = "v2", -- optional but strongly recommended
+	})
 
 	use("kdheepak/tabline.nvim")
 	use("christoomey/vim-tmux-navigator")
@@ -65,8 +69,12 @@ return require("packer").startup(function(use)
 	use("neovim/nvim-lspconfig")
 	use("jose-elias-alvarez/null-ls.nvim")
 
-	use({ "catppuccin/nvim", as = "catppuccin" })
+	use({ "catppuccin/nvim" })
 
+	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
+	use("mg979/vim-visual-multi", { branch = "master" })
+
+	use("kylechui/nvim-surround")
 	use("nvim-lua/plenary.nvim")
 
 	use("terrortylor/nvim-comment")

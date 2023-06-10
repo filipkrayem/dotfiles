@@ -13,6 +13,15 @@ require("telescope").setup({
 			"node_modules",
 			"*.min.js",
 			".DS_Store",
+			".git/",
+			".idea/",
+			".vscode/",
+			".cache/",
+		},
+	},
+	pickers = {
+		find_files = {
+			hidden = true,
 		},
 	},
 })

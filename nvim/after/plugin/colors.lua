@@ -1,20 +1,4 @@
--- require('rose-pine').setup({
---     disable_background = true,
---     variant = 'moon',
---     dim_nc_background = false,
---     highlight_groups = {
---         ColorColumn = { bg = 'rose' },
---
---     }
--- })
---
-function ColorMyPencils(color)
-	color = color or "rose-pine"
-	vim.cmd.colorscheme(color)
-
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-end
+vim.opt.termguicolors = true
 
 require("catppuccin").setup({
 	flavour = "mocha", -- latte, frappe, macchiato, mocha
@@ -55,10 +39,19 @@ require("catppuccin").setup({
 		gitsigns = true,
 		nvimtree = true,
 		telescope = true,
+		harpoon = true,
 		notify = false,
 		mini = false,
 		-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 	},
 })
 
-ColorMyPencils("catppuccin")
+function ColorMyPencils(color)
+	color = color or "catppuccin"
+	vim.cmd.colorscheme(color)
+
+	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+end
+
+ColorMyPencils()
