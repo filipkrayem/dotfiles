@@ -134,22 +134,50 @@ cmp.setup({
 	},
 })
 
-
-require("mason-null-ls").setup({
-	automatic_setup = true,
-})
-
 local null_ls = require("null-ls")
+
+-- require("mason-null-ls").setup({
+--     ensure_installed = {
+--         "prettierd",
+--         "eslint_d",
+--         "stylua",
+--         "rustfmt",
+--         "gofmt",
+--         "clang_format",
+--         "clang_check",
+--         "tsc",
+--
+--         -- Opt to list sources here, when available in mason.
+--     },
+--     automatic_installation = false,
+--     handlers = {},
+-- })
+-- require("null-ls").setup({
+--     sources = {
+--         -- Anything not supported by mason.
+--     }
+-- })
 
 null_ls.setup({
 	sources = {
+		null_ls.builtins.diagnostics.eslint_d.with({
+			-- ignore prettier warnings from eslint-plugin-prettier
+			filter = function(diagnostic)
+				-- create an array of diagnostic codes and then check if diagnostic code is in that array
+				return diagnostic.code ~= "prettier/prettier" or diagnostic.code ~= "@typescript-eslint/eslint-plugin"
+			end,
+		}),
+		null_ls.builtins.formatting.eslint_d.with({
+			condition = function()
+				return false
+			end,
+		}),
 		null_ls.builtins.formatting.prettierd,
-		-- null_ls.builtins.diagnostics.eslint_d,
 		null_ls.builtins.formatting.stylua,
 		null_ls.builtins.formatting.rustfmt,
 		null_ls.builtins.formatting.gofmt,
-        null_ls.builtins.formatting.clang_format,
-        null_ls.builtins.diagnostics.clang_check,
+		null_ls.builtins.formatting.clang_format,
+		null_ls.builtins.diagnostics.clang_check,
 		null_ls.builtins.diagnostics.tsc,
 	},
 	debug = false,

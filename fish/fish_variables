@@ -8,7 +8,7 @@ SETUVAR --export FNM_NODE_DIST_MIRROR:https\x3a//nodejs\x2eorg/dist
 SETUVAR --export FNM_VERSION_FILE_STRATEGY:local
 SETUVAR --export --path PATH:/Users/filip/Library/Caches/fnm_multishells/19719_1659633854895/bin\x1e/usr/local/bin\x1e/usr/bin\x1e/bin\x1e/usr/sbin\x1e/sbin\x1e/usr/local/bin/fpc\x1e/usr/local/bin/python3\x1e/Library/PostgreSQL/13/bin\x1e/Applications/Postgres\x2eapp/Contents/Versions/latest/bin\x1e/usr/local/share/dotnet/dotnet\x1e/usr/local/bin/fish\x1e/opt/homebrew/bin
 SETUVAR __fish_initialized:3400
-SETUVAR default_user:your_normal_user
+SETUVAR default_user:filipkrayem
 SETUVAR fish_color_autosuggestion:BD93F9
 SETUVAR fish_color_cancel:\x2d\x2dreverse
 SETUVAR fish_color_command:F8F8F2
@@ -49,7 +49,7 @@ SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
 SETUVAR fish_prompt_pwd_dir_length:3
-SETUVAR fish_user_paths:/Users/filip/\x2econfig/tmux/plugins/t\x2dsmart\x2dtmux\x2dsession\x2dmanager/bin\x1e/usr/local/bin\x1e/opt/homebrew/opt/fzf/bin\x1e/usr/local/bin/fish/nvim\x1e/usr/local/bin/nvim\x2dmacos/bin/nvim
+SETUVAR fish_user_paths:/Users/filip/\x2econfig/bin/scripts\x1e/Users/filip/\x2ecargo/bin\x1e/Users/filipkrayem/\x2ecargo/bin\x1e/Users/filipkrayem/\x2econfig/tmux/plugins/t\x2dsmart\x2dtmux\x2dsession\x2dmanager/bin\x1e/Users/filip/\x2econfig/tmux/plugins/t\x2dsmart\x2dtmux\x2dsession\x2dmanager/bin\x1e/usr/local/bin\x1e/opt/homebrew/opt/fzf/bin\x1e/usr/local/bin/fish/nvim\x1e/usr/local/bin/nvim\x2dmacos/bin/nvim
 SETUVAR theme_avoid_ambiguous_glyphs:yes
 SETUVAR theme_color_scheme:nord
 SETUVAR theme_date_format:\x2b\x25a\x20\x25H\x3a\x25M
@@ -65,13 +65,13 @@ SETUVAR theme_display_git_dirty_verbose:no
 SETUVAR theme_display_git_stashed_verbose:no
 SETUVAR theme_display_git_untracked:yes
 SETUVAR theme_display_hg:yes
-SETUVAR theme_display_hostname:ssh
+SETUVAR theme_display_hostname:no
 SETUVAR theme_display_jobs_verbose:yes
 SETUVAR theme_display_k8s_context:no
 SETUVAR theme_display_nix:no
 SETUVAR --export theme_display_node:yes
 SETUVAR theme_display_ruby:no
-SETUVAR theme_display_user:ssh
+SETUVAR theme_display_user:no
 SETUVAR theme_display_vagrant:yes
 SETUVAR theme_display_vi:yes
 SETUVAR theme_display_virtualenv:no
@@ -79,11 +79,11 @@ SETUVAR theme_git_default_branches:master\x1emain
 SETUVAR theme_git_worktree_support:no
 SETUVAR theme_nerd_fonts:yes
 SETUVAR theme_newline_cursor:no
-SETUVAR theme_powerline_fonts:no
-SETUVAR theme_project_dir_length:1
+SETUVAR theme_powerline_fonts:yes
+SETUVAR theme_project_dir_length:3
 SETUVAR theme_show_exit_status:yes
 SETUVAR theme_title_display_path:no
 SETUVAR theme_title_display_process:yes
-SETUVAR theme_title_display_user:yes
+SETUVAR theme_title_display_user:no
 SETUVAR theme_title_use_abbreviated_path:no
 SETUVAR theme_use_abbreviated_branch_name:yes
