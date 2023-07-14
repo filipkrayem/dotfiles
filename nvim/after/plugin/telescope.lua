@@ -17,6 +17,8 @@ require("telescope").setup({
 			".idea/",
 			".vscode/",
 			".cache/",
+			".target/",
+			".next/",
 		},
 	},
 	pickers = {

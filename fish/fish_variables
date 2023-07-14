@@ -6,6 +6,7 @@ SETUVAR --export FNM_LOGLEVEL:info
 SETUVAR --export --path FNM_MULTISHELL_PATH:/Users/filip/Library/Caches/fnm_multishells/19719_1659633854895
 SETUVAR --export FNM_NODE_DIST_MIRROR:https\x3a//nodejs\x2eorg/dist
 SETUVAR --export FNM_VERSION_FILE_STRATEGY:local
+SETUVAR --export --path GOPATH:/Users/filip/Documents/Repos/go
 SETUVAR --export --path PATH:/Users/filip/Library/Caches/fnm_multishells/19719_1659633854895/bin\x1e/usr/local/bin\x1e/usr/bin\x1e/bin\x1e/usr/sbin\x1e/sbin\x1e/usr/local/bin/fpc\x1e/usr/local/bin/python3\x1e/Library/PostgreSQL/13/bin\x1e/Applications/Postgres\x2eapp/Contents/Versions/latest/bin\x1e/usr/local/share/dotnet/dotnet\x1e/usr/local/bin/fish\x1e/opt/homebrew/bin
 SETUVAR __fish_initialized:3400
 SETUVAR default_user:filipkrayem
@@ -49,7 +50,7 @@ SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
 SETUVAR fish_prompt_pwd_dir_length:3
-SETUVAR fish_user_paths:/Users/filip/\x2econfig/bin/scripts\x1e/Users/filip/\x2ecargo/bin\x1e/Users/filipkrayem/\x2ecargo/bin\x1e/Users/filipkrayem/\x2econfig/tmux/plugins/t\x2dsmart\x2dtmux\x2dsession\x2dmanager/bin\x1e/Users/filip/\x2econfig/tmux/plugins/t\x2dsmart\x2dtmux\x2dsession\x2dmanager/bin\x1e/usr/local/bin\x1e/opt/homebrew/opt/fzf/bin\x1e/usr/local/bin/fish/nvim\x1e/usr/local/bin/nvim\x2dmacos/bin/nvim
+SETUVAR fish_user_paths:/Users/filip/Documents/Repos/go/bin\x1e/Users/filip/\x2econfig/bin/scripts\x1e/Users/filip/\x2ecargo/bin\x1e/Users/filipkrayem/\x2ecargo/bin\x1e/Users/filipkrayem/\x2econfig/tmux/plugins/t\x2dsmart\x2dtmux\x2dsession\x2dmanager/bin\x1e/Users/filip/\x2econfig/tmux/plugins/t\x2dsmart\x2dtmux\x2dsession\x2dmanager/bin\x1e/usr/local/bin\x1e/opt/homebrew/opt/fzf/bin\x1e/usr/local/bin/fish/nvim\x1e/usr/local/bin/nvim\x2dmacos/bin/nvim
 SETUVAR theme_avoid_ambiguous_glyphs:yes
 SETUVAR theme_color_scheme:nord
 SETUVAR theme_date_format:\x2b\x25a\x20\x25H\x3a\x25M

@@ -1,12 +1,12 @@
 local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+	local fn = vim.fn
+	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+	if fn.empty(fn.glob(install_path)) > 0 then
+		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+		vim.cmd([[packadd packer.nvim]])
+		return true
+	end
+	return false
 end
 
 local packer_bootstrap = ensure_packer()
@@ -73,7 +73,9 @@ return require("packer").startup(function(use)
 	use("MunifTanjim/prettier.nvim")
 	use("neovim/nvim-lspconfig")
 	use("jose-elias-alvarez/null-ls.nvim")
+	use("princejoogie/tailwind-highlight.nvim")
 
+    use("jose-elias-alvarez/typescript.nvim")
 	use({ "catppuccin/nvim" })
 
 	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
@@ -107,13 +109,11 @@ return require("packer").startup(function(use)
 		config = function()
 			vim.o.timeout = true
 			vim.o.timeoutlen = 300
-			require("which-key").setup({
-				-- your configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
-			})
+			require("which-key").setup({})
 		end,
 	})
+
+	use("petertriho/nvim-scrollbar")
 
 	use("windwp/nvim-ts-autotag")
 
@@ -124,6 +124,14 @@ return require("packer").startup(function(use)
 
 	use("f-person/git-blame.nvim")
 	use("akinsho/git-conflict.nvim")
+
+    use({
+	"L3MON4D3/LuaSnip",
+	-- follow latest release.
+	tag = "v1.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+	-- install jsregexp (optional!:).
+	run = "make install_jsregexp"
+})
 
 	use({
 		"VonHeikemen/lsp-zero.nvim",

@@ -62,7 +62,7 @@ lsp.on_attach(function(client, bufnr)
 		vim.lsp.buf.signature_help()
 	end, opts)
 
-	-- format on save
+	-- format on save + organize imports
 	if client.supports_method("textDocument/formatting") then
 		vim.api.nvim_buf_create_user_command(bufnr, "LspFormatting", function()
 			vim.lsp.buf.format({
@@ -79,6 +79,14 @@ lsp.on_attach(function(client, bufnr)
 			command = "undojoin | LspFormatting",
 		})
 	end
+
+	local tw_highlight = require("tailwind-highlight")
+
+	tw_highlight.setup(client, bufnr, {
+		single_column = false,
+		mode = "background",
+		debounce = 200,
+	})
 end)
 
 lsp.set_sign_icons({
@@ -88,14 +96,33 @@ lsp.set_sign_icons({
 	info = "»",
 })
 
+require("lspconfig").eslint.setup({
+	single_file_support = false,
+	settings = {
+		format = false,
+		lint = true,
+		codeActionOnSave = {
+			enable = false,
+			mode = "all",
+		},
+		codeAction = {
+			disableRuleComment = {
+				enable = false,
+			},
+			showDocumentation = {
+				enable = false,
+			},
+		},
+	},
+})
+
 lsp.setup()
 cmp.setup({
 	mapping = cmp_mappings,
 	sources = {
-
 		{ name = "path" },
-		{ name = "luasnip", keyword_length = 2 },
 		{ name = "nvim_lsp" },
+		-- { name = "luasnip", keyword_length = 2 },
 		{ name = "buffer", keyword_length = 3 },
 		-- { name = "nvim_lsp_signature_help" },
 	},
@@ -104,9 +131,14 @@ cmp.setup({
 		completeopt = "menu,menuone,noinsert",
 	},
 	window = {
-		documentation = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered({}),
 		completion = cmp.config.window.bordered(),
 		signature = cmp.config.window.bordered(),
+	},
+	snippet = {
+		expand = function(args)
+			require("luasnip").lsp_expand(args.body)
+		end,
 	},
 	formatting = {
 		fields = { "abbr", "kind", "menu" },
@@ -117,7 +149,11 @@ cmp.setup({
 			preset = "codicons",
 			before = function(entry, vim_item)
 				if entry.completion_item.detail ~= nil and entry.completion_item.detail ~= "" then
-					vim_item.menu = entry.completion_item.detail
+					if entry.completion_item.detail:len() > 30 then
+						vim_item.menu = entry.completion_item.detail:sub(1, 30) .. "..."
+					else
+						vim_item.menu = entry.completion_item.detail
+					end
 				else
 					local menu_text = {
 						nvim_lsp = "[LSP]",
@@ -136,35 +172,26 @@ cmp.setup({
 
 local null_ls = require("null-ls")
 
--- require("mason-null-ls").setup({
---     ensure_installed = {
---         "prettierd",
---         "eslint_d",
---         "stylua",
---         "rustfmt",
---         "gofmt",
---         "clang_format",
---         "clang_check",
---         "tsc",
---
---         -- Opt to list sources here, when available in mason.
---     },
---     automatic_installation = false,
---     handlers = {},
--- })
--- require("null-ls").setup({
---     sources = {
---         -- Anything not supported by mason.
---     }
--- })
+require("mason-null-ls").setup({
+	ensure_installed = {
+		"prettierd",
+		"stylua",
+		"rustfmt",
+		"tsserver",
+		-- Opt to list sources here, when available in mason.
+	},
+	automatic_installation = false,
+	handlers = {},
+})
 
 null_ls.setup({
 	sources = {
 		null_ls.builtins.diagnostics.eslint_d.with({
-			-- ignore prettier warnings from eslint-plugin-prettier
 			filter = function(diagnostic)
-				-- create an array of diagnostic codes and then check if diagnostic code is in that array
-				return diagnostic.code ~= "prettier/prettier" or diagnostic.code ~= "@typescript-eslint/eslint-plugin"
+				return not string.find(diagnostic.code or "", "typescript-eslint", 1, true)
+			end,
+			condition = function()
+				return false
 			end,
 		}),
 		null_ls.builtins.formatting.eslint_d.with({
@@ -172,13 +199,11 @@ null_ls.setup({
 				return false
 			end,
 		}),
-		null_ls.builtins.formatting.prettierd,
-		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.rustfmt,
-		null_ls.builtins.formatting.gofmt,
-		null_ls.builtins.formatting.clang_format,
-		null_ls.builtins.diagnostics.clang_check,
-		null_ls.builtins.diagnostics.tsc,
+		null_ls.builtins.formatting.gofmt.with({
+			extra_args = { "-s" },
+		}),
+		null_ls.builtins.formatting.prismaFmt,
+		require("typescript.extensions.null-ls.code-actions"),
 	},
 	debug = false,
 })
