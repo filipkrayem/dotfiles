@@ -12,7 +12,8 @@ alias ls="exa -1a --icons"
 alias lst="exa --long --tree --icons --no-user --no-time --no-permissions --level=3 -I node_modules/"
 alias lg="lazygit"
 alias pn="pnpm"
-
+alias copypath='pwd|pbcopy'
+ 
 funcsave -q vim
 
 fish_add_path $HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin
@@ -26,3 +27,10 @@ set -x -U GOPATH $HOME/Documents/Repos/go
 
 
 
+
+# pnpm
+set -gx PNPM_HOME "/Users/filip/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end

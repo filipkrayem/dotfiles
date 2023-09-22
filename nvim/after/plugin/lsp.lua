@@ -73,6 +73,7 @@ lsp.on_attach(function(client, bufnr)
 			})
 		end, {})
 		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			group = augroup,
 			buffer = bufnr,
@@ -117,13 +118,14 @@ require("lspconfig").eslint.setup({
 })
 
 lsp.setup()
+
 cmp.setup({
 	mapping = cmp_mappings,
 	sources = {
 		{ name = "path" },
 		{ name = "nvim_lsp" },
-		-- { name = "luasnip", keyword_length = 2 },
 		{ name = "buffer", keyword_length = 3 },
+		{ name = "luasnip", keyword_length = 2 },
 		-- { name = "nvim_lsp_signature_help" },
 	},
 	preselect = "item",
@@ -203,7 +205,6 @@ null_ls.setup({
 			extra_args = { "-s" },
 		}),
 		null_ls.builtins.formatting.prismaFmt,
-		require("typescript.extensions.null-ls.code-actions"),
 	},
 	debug = false,
 })

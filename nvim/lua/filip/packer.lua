@@ -54,6 +54,8 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	use("numToStr/Comment.nvim")
+
 	use("nvim-treesitter/playground")
 	use("theprimeagen/harpoon")
 	use("theprimeagen/refactoring.nvim")
@@ -67,15 +69,28 @@ return require("packer").startup(function(use)
 
 	use("kdheepak/tabline.nvim")
 	use("christoomey/vim-tmux-navigator")
-	use("nvim-tree/nvim-tree.lua")
-	use("nvim-tree/nvim-web-devicons")
+
+	use({
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+		},
+	})
 
 	use("MunifTanjim/prettier.nvim")
 	use("neovim/nvim-lspconfig")
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("princejoogie/tailwind-highlight.nvim")
 
-    use("jose-elias-alvarez/typescript.nvim")
+	-- use("jose-elias-alvarez/typescript.nvim")
+	use({
+		"pmizio/typescript-tools.nvim",
+		requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+	})
+
 	use({ "catppuccin/nvim" })
 
 	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
@@ -84,7 +99,6 @@ return require("packer").startup(function(use)
 	use("kylechui/nvim-surround")
 	use("nvim-lua/plenary.nvim")
 
-	use("terrortylor/nvim-comment")
 	use("nvim-lualine/lualine.nvim")
 	use("onsails/lspkind.nvim")
 
@@ -123,15 +137,16 @@ return require("packer").startup(function(use)
 	})
 
 	use("f-person/git-blame.nvim")
+
 	use("akinsho/git-conflict.nvim")
 
-    use({
-	"L3MON4D3/LuaSnip",
-	-- follow latest release.
-	tag = "v1.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-	-- install jsregexp (optional!:).
-	run = "make install_jsregexp"
-})
+	use({
+		"L3MON4D3/LuaSnip",
+		-- follow latest release.
+		tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+		-- install jsregexp (optional!:).
+		run = "make install_jsregexp",
+	})
 
 	use({
 		"VonHeikemen/lsp-zero.nvim",

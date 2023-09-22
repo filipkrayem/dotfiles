@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader><leader>", "<cmd>silent wa | silent NvimTreeFocus<CR>")
+vim.keymap.set("n", "<leader><leader>", "<cmd>silent wa | silent Neotree<CR>")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
@@ -53,14 +53,13 @@ vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/lua/filip/packer.lua<C
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
 vim.keymap.set("n", "<leader>pa", "<cmd>Telescope resume<CR>")
 
-
 -- map helper
 local function map(mode, lhs, rhs, opts)
-    local options = { noremap = true }
-    if opts then
-        options = vim.tbl_extend("force", options, opts)
-    end
-    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+	local options = { noremap = true }
+	if opts then
+		options = vim.tbl_extend("force", options, opts)
+	end
+	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 map("", "gx", '<Cmd>call jobstart(["open", expand("<cfile>")], {"detach": v:true})<CR>', {})
