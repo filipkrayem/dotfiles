@@ -31,13 +31,6 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>f", function()
-	vim.lsp.buf.format({
-		filter = function(c)
-			return c.name == "null-ls"
-		end,
-	})
-end)
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
@@ -53,6 +46,7 @@ vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/lua/filip/packer.lua<C
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
 vim.keymap.set("n", "<leader>pa", "<cmd>Telescope resume<CR>")
 
+vim.keymap.set("n", "<leader>f", "<cmd>EslintFixAll<CR>")
 -- map helper
 local function map(mode, lhs, rhs, opts)
 	local options = { noremap = true }

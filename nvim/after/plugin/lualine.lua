@@ -1,3 +1,6 @@
+-- local custom_rosepine = require("lualine.themes.rose-pine")
+--
+-- custom_rosepine.normal.b.bg = "#1f2335"
 require("lualine").setup({
 	options = {
 		icons_enabled = true,

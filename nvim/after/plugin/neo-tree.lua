@@ -1,5 +1,5 @@
-vim.g.loaded_netrtruew = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrtruew = 1
+-- vim.g.loaded_netrwPlugin = 1
 
 -- If you want icons for diagnostic errors, you'll need to define them somewhere:
 vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })

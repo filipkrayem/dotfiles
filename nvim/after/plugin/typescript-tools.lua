@@ -16,7 +16,10 @@ require("typescript-tools").setup({
 		tsserver_path = nil,
 		-- specify a list of plugins to load by tsserver, e.g., for support `styled-components`
 		-- (see 💅 `styled-components` support section)
-		tsserver_plugins = {},
+		tsserver_plugins = {
+			"@styled/typescript-styled-plugin",
+			"typescript-styled-plugin",
+		},
 		-- this value is passed to: https://nodejs.org/api/cli.html#--max-old-space-sizesize-in-megabytes
 		-- memory limit in megabytes or "auto"(basically no limit)
 		tsserver_max_memory = "auto",
@@ -25,6 +28,7 @@ require("typescript-tools").setup({
 			includeInlayParameterNameHints = "all",
 			includeCompletionsForModuleExports = true,
 			quotePreference = "auto",
+			importModuleSpecifierPreference = "relative",
 		},
 		tsserver_format_options = {
 			allowIncompleteCompletions = false,

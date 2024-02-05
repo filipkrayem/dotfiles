@@ -16,7 +16,7 @@ return require("packer").startup(function(use)
 
 	use({
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.0",
+		tag = "0.1.4",
 		-- or                            , branch = '0.1.x',
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
@@ -25,6 +25,23 @@ return require("packer").startup(function(use)
 		"rose-pine/neovim",
 		as = "rose-pine",
 	})
+
+	use({
+		"folke/tokyonight.nvim",
+	})
+
+	use({
+		"daschw/leaf.nvim",
+	})
+
+	use({
+		"sainnhe/sonokai",
+	})
+
+	use({
+		"EdenEast/nightfox.nvim",
+	})
+
 	use({
 		"folke/trouble.nvim",
 		config = function()
@@ -137,6 +154,7 @@ return require("packer").startup(function(use)
 	})
 
 	use("f-person/git-blame.nvim")
+	use("APZelos/blamer.nvim")
 
 	use("akinsho/git-conflict.nvim")
 

@@ -13,6 +13,8 @@ alias lst="exa --long --tree --icons --no-user --no-time --no-permissions --leve
 alias lg="lazygit"
 alias pn="pnpm"
 alias copypath='pwd|pbcopy'
+alias ycc='yarn code:check'
+alias ycf='yarn code:fix'
  
 funcsave -q vim
 
