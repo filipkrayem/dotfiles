@@ -25,10 +25,9 @@ require("typescript-tools").setup({
 		tsserver_max_memory = "auto",
 
 		tsserver_file_preferences = {
-			includeInlayParameterNameHints = "all",
 			includeCompletionsForModuleExports = true,
 			quotePreference = "auto",
-			importModuleSpecifierPreference = "relative",
+			importModuleSpecifierPreference = "auto",
 		},
 		tsserver_format_options = {
 			allowIncompleteCompletions = false,

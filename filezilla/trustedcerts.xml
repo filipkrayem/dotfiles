@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<FileZilla3 version="3.66.4" platform="mac">
+	<FtpSessionResumption>
+		<Entry Host="193.86.239.23" Port="21">true</Entry>
+	</FtpSessionResumption>
+	<InsecureHosts>
+		<Host Port="21">10.59.99.114</Host>
+		<Host Port="21">54.229.181.119</Host>
+		<Host Port="21">54.194.40.193</Host>
+	</InsecureHosts>
+</FileZilla3>

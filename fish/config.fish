@@ -15,17 +15,17 @@ alias pn="pnpm"
 alias copypath='pwd|pbcopy'
 alias ycc='yarn code:check'
 alias ycf='yarn code:fix'
+alias yd='yarn dev'
  
 funcsave -q vim
 
+fish_add_path $HOME/.config/bin/scripts
 fish_add_path $HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin
 fish_add_path $HOME/.cargo/bin
-fish_add_path $HOME/.config/bin/scripts
 fish_add_path $HOME/Documents/Repos/go/bin
 # neofetch
 set -g theme_display_user no
 set -x -U GOPATH $HOME/Documents/Repos/go
-
 
 
 

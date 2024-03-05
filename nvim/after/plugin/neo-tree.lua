@@ -123,6 +123,9 @@ require("neo-tree").setup({
 			enabled = true,
 			required_width = 110, -- min width of window required to show this column
 		},
+		symlink_target = {
+			enabled = false,
+		},
 	},
 	-- A list of functions, each representing a global custom command
 	-- that will be available in all sources (if not overridden in `opts[source_name].commands`)
@@ -143,7 +146,8 @@ require("neo-tree").setup({
 			["<2-LeftMouse>"] = "open",
 			["<cr>"] = "open",
 			["<esc>"] = "cancel", -- close preview or floating neo-tree window
-			["P"] = { "toggle_preview", config = { use_float = true } },
+			["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
+			-- Read `# Preview Mode` for more information
 			["l"] = "focus_preview",
 			["S"] = "open_split",
 			["s"] = "open_vsplit",
@@ -205,6 +209,7 @@ require("neo-tree").setup({
 			},
 			always_show = { -- remains visible even if other settings would normally hide it
 				".gitignore",
+				".gitignored",
 			},
 			never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
 				".DS_Store",
@@ -217,7 +222,7 @@ require("neo-tree").setup({
 		follow_current_file = {
 			enabled = true, -- This will find and focus the file in the active buffer every time
 			--               -- the current file is changed while the tree is open.
-			leave_dirs_open = false, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
+			leave_dirs_open = true, -- `false` closes auto expanded dirs, such as with `:Neotree reveal`
 		},
 		group_empty_dirs = false, -- when true, empty folders will be grouped together
 		hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
@@ -243,6 +248,7 @@ require("neo-tree").setup({
 				["o"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
 				["oc"] = { "order_by_created", nowait = false },
 				["od"] = { "order_by_diagnostics", nowait = false },
+				["og"] = { "order_by_git_status", nowait = false },
 				["om"] = { "order_by_modified", nowait = false },
 				["on"] = { "order_by_name", nowait = false },
 				["os"] = { "order_by_size", nowait = false },

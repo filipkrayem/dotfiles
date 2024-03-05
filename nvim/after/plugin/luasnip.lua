@@ -38,16 +38,17 @@ end
 
 ls.add_snippets("typescriptreact", {
 	s(
-		"c",
+		"comp",
 		fmt(
 			[[
-interface {}Props {{
+export interface {}Props {{
     {}
 }}
 
-export default function {}(props: {}Props) {{
-    const {{{}}} = props;
-    return (<div>Hi</div>);
+export default function {}({{{}}}: {}Props) {{
+    return (<div>
+
+    </div>);
 }}
 ]],
 			{
@@ -59,10 +60,9 @@ export default function {}(props: {}Props) {{
 				end, { 1 }),
 				i(1, ""),
 				rep(2),
-				rep(2),
 				f(function(_, snip, _)
-					local pos_begin = snip.nodes[6].mark:pos_begin()
-					local pos_end = snip.nodes[6].mark:pos_end()
+					local pos_begin = snip.nodes[2].mark:pos_begin()
+					local pos_end = snip.nodes[2].mark:pos_end()
 					local parser = vim.treesitter.get_parser(0, "tsx")
 					local tstree = parser:parse()
 
@@ -83,6 +83,7 @@ export default function {}(props: {}Props) {{
 					-- Does this lua->vimscript->lua thing cause a slow down? Dunno.
 					return vim.fn.join(prop_names, ", ")
 				end, { 1 }),
+				rep(2),
 			}
 		)
 	),

@@ -31,6 +31,14 @@ return require("packer").startup(function(use)
 	})
 
 	use({
+		"s1n7ax/nvim-window-picker",
+		tag = "v2.*",
+		config = function()
+			require("window-picker").setup()
+		end,
+	})
+
+	use({
 		"daschw/leaf.nvim",
 	})
 

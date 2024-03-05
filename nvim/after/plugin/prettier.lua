@@ -1,7 +1,7 @@
 local prettier = require("prettier")
 
 prettier.setup({
-	bin = "prettierd", -- or `'prettierd'` (v0.23.3+)
+	bin = "prettierd",
 	filetypes = {
 		"css",
 		"graphql",
@@ -15,6 +15,7 @@ prettier.setup({
 		"typescript",
 		"typescriptreact",
 		"yaml",
+		"astro",
 	},
 	cli_options = {
 		arrow_parens = "always",

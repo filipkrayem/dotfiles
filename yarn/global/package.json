@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "create-keystone-app": "^9.0.1"
+  }
+}
